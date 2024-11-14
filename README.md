@@ -84,12 +84,12 @@ A new stored procedure, `GetAllProducts`, retrieves products and associated prop
 
 - **Query Example**:
   ```sql
-  USE tt;
-GO
-
-CREATE PROCEDURE GetAllProducts
-AS
-BEGIN
+  USE tt
+  GO
+  
+  CREATE PROCEDURE GetAllProducts
+  AS
+  BEGIN
     SELECT 
         p.Id AS ProductId,
         p.Name AS ProductName,
@@ -106,8 +106,9 @@ BEGIN
     LEFT JOIN 
         [tt].[dbo].[Properties] AS prop ON pp.PropertyId = prop.Id
     ORDER BY 
-        p.Id;
-END;
+        p.Id
+  
+  END;
 
 
 ## 7. Database View: `vw_AllProperties` - TT.Lib/DataScripts
