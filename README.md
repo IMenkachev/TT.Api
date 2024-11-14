@@ -24,7 +24,7 @@ The `DataController` class manages data retrieval operations for fetching produc
 
 ---
 
-## 2. ExportController: TT.Api/Controllers
+## 2. ExportController: [TT.Api/Controllers/ExportController](https://github.com/IMenkachev/TT.Api/blob/master/TT.Api/Controllers/ExportController.cs)
 
 The `ExportController` class exports product data, including brand information and a property hierarchy.
 
@@ -39,42 +39,39 @@ The `ExportController` class exports product data, including brand information a
 
 ---
 
-## 3. New DTOs: TT.Lib/Dtos
+## 3. New DTOs: [TT.Lib/Dtos](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/Dtos)
 
 The following DTOs support data transfer between the service layer and the API endpoints.
 
-- **BrandDto**: Represents brand data, with fields `Id` and `BrandName`.
-- **ProductExportDto**: Represents exported product data with fields `Id`, `Name`, `Brand`, and a dictionary of `Properties`.
-- **ProductDto**: Represents product structure used by the `DataController`, including `ProductId`, `ProductName`, `BrandName`, and various property-related fields.
-- **ProductPropertyDto** and **PropertyDto**: Represent product properties and individual property details.
+- **[BrandDto](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Dtos/BrandDto.cs)**: Represents brand data, with fields `Id` and `BrandName`.
+- **[ProductExportDto](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Dtos/ProductExportDto.cs)**: Represents exported product data with fields `Id`, `Name`, `Brand`, and a dictionary of `Properties`.
+- **[ProductDto](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Dtos/ProductDto.cs)**: Represents product structure used by the `DataController`, including `ProductId`, `ProductName`, `BrandName`, and various property-related fields.
+- **[ProductPropertyDto](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Dtos/ProductPropertyDto.cs)** and **[PropertyDto](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Dtos/PropertyDto.cs)**: Represent product properties and individual property details.
 
 Each DTO is designed to decouple data presentation from core database entities.
 
 ---
 
-## 4. Service Layer and Helper: TT.Lib/Services
+## 4. Service Layer and Helper: [TT.Lib/Services](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/Services)
 
-### DatabaseService
+### [DatabaseService](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Services/DatabaseService.cs)
 The `DatabaseService` class implements `IDatabaseService` and provides methods for fetching products and properties from the database.
-- **ExecuteReaderAsync**: A helper method, `ExecuteReaderAsync`, in `ServiceHelper` enables efficient data retrieval using `SqlDataReader`.
+- **ExecuteReaderAsync**: A helper method, `ExecuteReaderAsync`, in [ServiceHelper](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Services/ServiceHelper.cs) enables efficient data retrieval using `SqlDataReader`.
 
-### ProductPropertiesService
+### [ProductPropertiesService](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Services/ProductPropertiesService.cs)
 The `ProductPropertiesService` class builds a hierarchical structure of product properties based on parent-child relationships.
-- **GetProductPropertiesAsync**: Fetches product properties and builds a nested dictionary hierarchy starting from a root property.
-- **BuildPropertyHierarchy**: A recursive helper method that constructs nested properties, with optimized handling for empty or null values.
+- **[GetProductPropertiesAsync](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Services/ProductPropertiesService.cs#L18)**: Fetches product properties and builds a nested dictionary hierarchy starting from a root property.
+- **[BuildPropertyHierarchy](https://github.com/IMenkachev/TT.Api/blob/master/TT.Lib/Services/ProductPropertiesService.cs#L45)**: A recursive helper method that constructs nested properties, with optimized handling for empty or null values.
 
 ---
 
-## 5. Database Migration: AddTypeColumnToProperties - TT.Lib/Migrations
+## 5. Database Migration: AddTypeColumnToProperties - [TT.Lib/Migrations](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/Migrations)
 
-A migration script, `AddTypeColumnToProperties`, adds a new column `Type` to the `Properties` table to specify property types.
-
-- **Up Migration**: Adds the `Type` column to `Properties`.
-- **Down Migration**: Removes the `Type` column, providing a rollback mechanism.
+A migration script, [AddTypeColumnToProperties](), adds a new column `Type` to the `Properties` table to specify property types.
 
 ---
 
-## 6. Stored Procedure: GetAllProducts - TT.Lib/DataScripts
+## 6. Stored Procedure: GetAllProducts - [TT.Lib/DataScripts](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/DataScripts)
 
 A new stored procedure, `GetAllProducts`, retrieves products and associated property data:
 
@@ -111,7 +108,7 @@ A new stored procedure, `GetAllProducts`, retrieves products and associated prop
   END;
 
 
-## 7. Database View: `vw_AllProperties` - TT.Lib/DataScripts
+## 7. Database View: `vw_AllProperties` - [TT.Lib/DataScripts](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/DataScripts)
 
 The `vw_AllProperties` database view provides a consolidated and structured view of all property-related information, which simplifies querying the `Properties` table and reduces the need for complex joins in application code.
 
