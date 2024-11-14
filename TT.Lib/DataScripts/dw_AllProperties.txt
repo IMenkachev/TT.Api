@@ -1,0 +1,7 @@
+﻿SELECT 
+    Id AS PropertyId, 
+    Name AS PropertyName, 
+    ParentId, 
+    Type AS PropertyType
+FROM   
+    dbo.Properties

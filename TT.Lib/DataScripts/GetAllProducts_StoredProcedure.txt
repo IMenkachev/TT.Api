@@ -1,0 +1,24 @@
+﻿USE tt;
+GO
+
+CREATE PROCEDURE GetAllProducts
+AS
+BEGIN
+    SELECT 
+        p.Id AS ProductId,
+        p.Name AS ProductName,
+        b.Name AS BrandName,
+        pp.Id AS ProductPropertyId,
+        prop.Name AS PropertyName,
+        pp.Value AS PropertyValue
+    FROM 
+        [tt].[dbo].[Products] AS p
+    JOIN 
+        [tt].[dbo].[Brand] AS b ON p.BrandId = b.Id
+    LEFT JOIN 
+        [tt].[dbo].[ProductProperties] AS pp ON p.Id = pp.ProductId
+    LEFT JOIN 
+        [tt].[dbo].[Properties] AS prop ON pp.PropertyId = prop.Id
+    ORDER BY 
+        p.Id;
+END;
