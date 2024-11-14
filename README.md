@@ -67,7 +67,7 @@ The `ProductPropertiesService` class builds a hierarchical structure of product 
 
 ## 5. Database Migration: AddTypeColumnToProperties - [TT.Lib/Migrations](https://github.com/IMenkachev/TT.Api/tree/master/TT.Lib/Migrations)
 
-A migration script, [AddTypeColumnToProperties](), adds a new column `Type` to the `Properties` table to specify property types.
+A migration script, `AddTypeColumnToProperties`, adds a new column `Type` to the `Properties` table to specify property types.
 
 ---
 
