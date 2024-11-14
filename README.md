@@ -5,7 +5,7 @@ This document describes the changes made to two APIs, `DataController` and `Expo
 
 ---
 
-## 1. DataController: TT.Api/Controllers
+## 1. DataController: [TT.Api/Controllers/DataController](https://github.com/IMenkachev/TT.Api/blob/master/TT.Api/Controllers/DataController.cs)
 
 The `DataController` class manages data retrieval operations for fetching product and property data.
 
