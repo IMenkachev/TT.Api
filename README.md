@@ -14,11 +14,11 @@ The `DataController` class manages data retrieval operations for fetching produc
 - **Error Handling**: Each endpoint uses a `try-catch` block to handle `SqlException` errors. If a database error occurs, an error message is logged, and a `500 Internal Server Error` is returned.
 
 ### Methods
-- **GetAllProducts** (`GET /data/products`)
+- **GetAllProducts** (`/data/products`)
   - Retrieves all products using `IDatabaseService`.
   - **Error Handling**: Logs errors and returns a `500 Internal Server Error` if a database issue occurs.
   
-- **GetAllProperties** (`GET /data/properties`)
+- **GetAllProperties** (`/data/properties`)
   - Retrieves all properties using `IDatabaseService`.
   - **Error Handling**: Similar to `GetAllProducts`, with error logging for troubleshooting.
 
@@ -33,7 +33,7 @@ The `ExportController` class exports product data, including brand information a
 - **Error Handling**: Error handling includes specific exception types, such as `DbUpdateException`, `InvalidOperationException`, and a general `Exception`, each with detailed logging and appropriate HTTP response codes.
 
 ### Methods
-- **GetProductExport** (`GET /export/product`)
+- **GetProductExport** (`/export/product`)
   - Fetches products with associated brands and builds a property hierarchy for each product using `ProductPropertiesService`.
   - **Error Handling**: Logs database update issues, invalid operations, and unexpected errors separately. Returns `500 Internal Server Error` for all exception cases, with specific error messages for clarity.
 
