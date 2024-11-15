@@ -38,7 +38,7 @@ namespace TT.Lib.Services
                 .ToDictionaryAsync(pp => pp.PropertyId, pp => pp.Value);
 
             // Build property hierarchy
-            var propertyHierarchy = BuildPropertyHierarchy(allProperties, productProperties, 1); // Root ID assumed to be 1
+            var propertyHierarchy = BuildPropertyHierarchy(allProperties, productProperties, 0);
             return propertyHierarchy;
         }
 
